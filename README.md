@@ -1,22 +1,64 @@
-<<<<<<< HEAD
-# Salesforce DX Project: Next Steps
+# Account Payments LWC Project
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+This project implements a custom Salesforce Lightning Web Component (LWC) to display **Accounts** and their related **Payments**, and allows creating new Payment records directly from the UI.  
+It also includes Apex controllers, unit tests with >80% coverage, and Reports & Dashboards for visualization.
 
-## How Do You Plan to Deploy Your Changes?
+## 📂 Project Contents
+- **Custom Object**: `Payment__c`  
+- **Apex Controller**: `AccountPaymentController`  
+- **Apex Test Class**: `AccountPaymentController_Test`  
+- **LWC Component**: `accountPayments`  
+- **Reports**: "Payments by Account Report"  
+- **Dashboard**: "Payments Dashboard"
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
 
-## Configure Your Salesforce DX Project
+## 🔗 Links
+- **GitHub Repository**: [https://github.com/urasylmaz1/Account-Payments-Projects-LWC-Project](https://github.com/urasylmaz1/Account-Payments-Projects-LWC-Project)  
+- **Trailhead Profile**: [https://www.salesforce.com/trailblazer/t7akiys40b8tdnu9a6](https://www.salesforce.com/trailblazer/t7akiys40b8tdnu9a6)  
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+## 🗂️ Object Schema
+Below is the schema showing the relationship between **Account** and **Payment__c**:
 
-## Read All About It
+![Schema](docs/schema.png)
 
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
-=======
-# Account-Payments-Projects-LWC-Project
->>>>>>> 8ca6d56c1114303cd7b29460be30b3e8663804ba
+## 🔗 Relationship Choice: Master-Detail vs Lookup
+I chose **Master-Detail** for the `Account - Payment` relationship because:
+- Payments cannot exist without an account.  
+- Deleting an account automatically deletes its related Payments.  
+- Allows use of **roll-up summary fields** (e.g., Total Payment Amount on Account).
+
+## 🧪 Test Coverage
+Unit tests were written in `AccountPaymentController_Test`.  
+
+- Coverage: **85%**  
+- Example result from Apex Test Execution:
+
+![Test Coverage](docs/test_coverage.png)
+
+## 📊 Reports
+A report was created to analyze Accounts and their Payments:  
+
+- **Report Name**: Payments by Account Report   
+- **Fields**: Account Name, Payment Type, Amount, Due Date, Notes  
+
+![Report](docs/report.png)
+
+## 📈 Dashboard
+A dashboard was created to visualize Payments data:  
+
+- **Dashboard Name**: Payments Dashboard  
+- **Components**:  
+  - Donut Chart → Payments by Type  
+  - Bar Chart → Total Payment Amount per Account  
+  - Line Chart → Payments by Due Date  
+
+![Dashboard](docs/dashboard.png)
+
+## 👥 Contributors
+- urasylmaz1@gmail.com
+- ydoganci@cyangate.com  
+- hbostan@cyangate.com
+
+
+
+
