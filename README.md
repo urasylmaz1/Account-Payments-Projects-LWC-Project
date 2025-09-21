@@ -39,7 +39,7 @@ Unit tests were written in `AccountPaymentController_Test`.
 A report was created to analyze Accounts and their Payments:  
 
 - **Report Name**: Payments by Account Report   
-- **Fields**: Account Name, Payment Type, Amount, Due Date, Notes  
+- **Fields**: Account Name, Payment Name, Amount, Due Date, Notes  
 
 ![Report](docs/report.png)
 
