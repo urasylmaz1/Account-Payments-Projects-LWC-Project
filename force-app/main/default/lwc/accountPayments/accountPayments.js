@@ -42,11 +42,12 @@ export default class AccountPayments extends LightningElement {
         this.newPayment.Account__c = this.selectedAccountId;
         createPayment({ payment: this.newPayment })
             .then(result => {
-                this.payments = [...this.payments, result]; 
+                this.payments = [...this.payments, result]; // update reactive list
                 this.newPayment = {}; // reset form
             })
             .catch(error => console.error(error));
     }
+
 
     getAccountClass(accId) {
         return accId === this.selectedAccountId ? 'selected' : '';
