@@ -1,6 +1,6 @@
 <template>
     <div class="container" style="display:flex; gap:20px;">
-        <!-- Sidebar: Accounts -->
+        <!-- Sidebar: accounts -->
         <div class="sidebar" style="width:25%; border-right:1px solid #ddd; padding:10px;">
             <h3>Accounts</h3>
             <template for:each={accounts} for:item="acc">
@@ -14,7 +14,7 @@
             </template>
         </div>
 
-        <!-- Middle: Payments list -->
+        <!-- Middle: listing payments -->
         <div class="payments" style="width:35%; padding:10px;">
             <template if:true={selectedAccountId}>
                 <h3>Payments</h3>
@@ -26,7 +26,7 @@
             </template>
         </div>
 
-        <!-- Right: Create Payment form -->
+        <!-- Right: creating payment form -->
         <div class="form" style="width:35%; padding:10px; border-left:1px solid #ddd;">
             <template if:true={selectedAccountId}>
                 <h3>New Payment</h3>

@@ -48,7 +48,6 @@ export default class AccountPayments extends LightningElement {
             .catch(error => console.error(error));
     }
 
-    // Getter to determine the CSS class for the selected account
     getAccountClass(accId) {
         return accId === this.selectedAccountId ? 'selected' : '';
     }
