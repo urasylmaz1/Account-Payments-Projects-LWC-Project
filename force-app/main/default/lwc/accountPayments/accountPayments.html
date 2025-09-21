@@ -1,0 +1,68 @@
+<template>
+    <div class="container" style="display:flex; gap:20px;">
+        <!-- Sidebar: Accounts -->
+        <div class="sidebar" style="width:25%; border-right:1px solid #ddd; padding:10px;">
+            <h3>Accounts</h3>
+            <template for:each={accounts} for:item="acc">
+                <p key={acc.Id} 
+                   onclick={handleSelectAccount} 
+                   data-id={acc.Id} 
+                   class={acc.className}
+                   style="cursor:pointer; padding:5px; border-bottom:1px solid #eee;">
+                    {acc.Name}
+                </p>
+            </template>
+        </div>
+
+        <!-- Middle: Payments list -->
+        <div class="payments" style="width:35%; padding:10px;">
+            <template if:true={selectedAccountId}>
+                <h3>Payments</h3>
+                <template for:each={payments} for:item="pay">
+                    <div key={pay.Id} class="payment-item" style="padding:5px; border-bottom:1px solid #eee;">
+                        {pay.Name} - {pay.Payment_Type__c} - {pay.Amount__c} - {pay.Due_Date__c}
+                    </div>
+                </template>
+            </template>
+        </div>
+
+        <!-- Right: Create Payment form -->
+        <div class="form" style="width:35%; padding:10px; border-left:1px solid #ddd;">
+            <template if:true={selectedAccountId}>
+                <h3>New Payment</h3>
+
+                <lightning-input label="Name"
+                                 value={newPayment.Name}
+                                 onchange={handleChange}
+                                 data-field="Name"></lightning-input>
+
+                <lightning-input type="number"
+                                 label="Amount"
+                                 value={newPayment.Amount__c}
+                                 onchange={handleChange}
+                                 data-field="Amount__c"></lightning-input>
+
+                <lightning-combobox label="Payment Type"
+                                    value={newPayment.Payment_Type__c}
+                                    options={paymentTypes}
+                                    onchange={handleChange}
+                                    data-field="Payment_Type__c"></lightning-combobox>
+
+                <lightning-input type="date"
+                                 label="Due Date"
+                                 value={newPayment.Due_Date__c}
+                                 onchange={handleChange}
+                                 data-field="Due_Date__c"></lightning-input>
+
+                <lightning-textarea label="Notes"
+                                    value={newPayment.Notes__c}
+                                    onchange={handleChange}
+                                    data-field="Notes__c"></lightning-textarea>
+
+                <lightning-button label="Create Payment"
+                  onclick={handleCreatePayment}
+                  class="slds-m-top_small"></lightning-button>
+            </template>
+        </div>
+    </div>
+</template>
